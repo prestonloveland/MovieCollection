@@ -1,9 +1,16 @@
+/*
+ * Preston Loveland
+ * Assignment 9
+ * Section 1 Group 11
+ * */
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MovieCollection.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +31,13 @@ namespace MovieCollection
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //adds database services
+            services.AddDbContext<MovieDbContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:MovieConnection"]);
+            });
+            services.AddScoped<IMovieRepository, EFMovieRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

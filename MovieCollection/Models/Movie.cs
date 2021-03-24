@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Preston Loveland
+ * Assignment 9
+ * Section 1 Group 11
+ * */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,8 +12,11 @@ using System.Threading.Tasks;
 namespace MovieCollection.Models
 {
     //class to record information on a movie entry
-    public class MovieEntry
+    public class Movie
     {
+        [Key, Required]
+        public int MovieId { get; set; }
+
         [Required]
         public string Category { get; set; }
 

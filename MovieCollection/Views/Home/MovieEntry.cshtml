@@ -8,52 +8,62 @@ Section 1 Group 11-->
 @{
     ViewBag.Title = "Movie Entry";
 }
-@model MovieCollection.Models.MovieEntry;
+@model MovieCollection.Models.Movie;
 <!--Form to receive data about a movie entry-->
-
-<form asp-action="MovieEntry" method="post">
-    <div>
-        <label asp-for="Category">Category: </label>
-        <input asp-for="Category" />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="MovieEntry" method="post">
+            <div class="form-group">
+                <label asp-for="Category" class="control-label font-weight-bolder">Category: </label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label font-weight-bolder">Title: </label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label font-weight-bolder">Year: </label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Director" class="control-label font-weight-bolder">Director: </label>
+                <input asp-for="Director" class="form-control" />
+                <span asp-validation-for="Director" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label font-weight-bolder">Rating: </label>
+                <select asp-for="Rating">
+                    <option value="">Select One: </option>
+                    <option value="G">G</option>
+                    <option value="PG">PG</option>
+                    <option value="PG-13">PG-13</option>
+                    <option value="R">R</option>
+                </select>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Edited" class="control-label font-weight-bolder">Edited: </label>
+                <select asp-for="Edited">
+                    <option value="">Select One: </option>
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+                <span asp-validation-for="Edited" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lent_To" class="control-label font-weight-bolder">Lent To: </label>
+                <input asp-for="Lent_To" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label font-weight-bolder">Notes: </label>
+                <input asp-for="Notes" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit Movie Entry</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <label asp-for="Title">Title: </label>
-        <input asp-for="Title" />
-    </div>
-    <div>
-        <label asp-for="Year">Year: </label>
-        <input asp-for="Year" />
-    </div>
-    <div>
-        <label asp-for="Director">Director: </label>
-        <input asp-for="Director" />
-    </div>
-    <div>
-        <label asp-for="Rating">Rating: </label>
-        <select asp-for="Rating">
-            <option value="">Select One: </option>
-            <option value="G">G</option>
-            <option value="PG">PG</option>
-            <option value="PG-13">PG-13</option>
-            <option value="R">R</option>
-        </select>
-    </div>
-    <div>
-        <label asp-for="Edited">Edited: </label>
-        <select asp-for="Edited">
-            <option value="">Select One: </option>
-            <option value="True">Yes</option>
-            <option value="False">No</option>
-        </select>
-    </div>
-    <div>
-        <label asp-for="Lent_To">Lent To: </label>
-        <input asp-for="Lent_To" />
-    </div>
-    <div>
-        <label asp-for="Notes">Notes: </label>
-        <input asp-for="Notes" />
-    </div>
-    <button type="submit">Submit Movie Entry</button>
-    <div asp-validation-summary="All"></div>
-</form>
+</div>
